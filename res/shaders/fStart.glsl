@@ -3,7 +3,8 @@ varying vec2 texCoord;  // The third coordinate is always 0.0 and is discarded
 
 uniform sampler2D texture;
 
+uniform float texScale;
 void main()
 {
-    gl_FragColor = color * texture2D( texture, texCoord * 2.0 );
+    gl_FragColor = color * texture2D( texture, texCoord * texScale );   // part B - declare texScale var and replace 2.0
 }
