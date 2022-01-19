@@ -761,12 +761,13 @@ void reshape(int width, int height)
     GLfloat bot;
     GLfloat top;
 
-    if (width > height)
+    if (width < height)
     {
         left = -nearDist;
         right = nearDist;
         bot = -nearDist * (float)height / (float)width;
         top = nearDist * (float)width / (float)height;
+        projection = Frustum(left, right, bot, top, 0.2, 500);
     }
     else
     {
@@ -774,8 +775,8 @@ void reshape(int width, int height)
         right = nearDist * (float)width / (float)height;
         bot = -nearDist;
         top = nearDist;
+        projection = Frustum(left, right, bot, top, 0.2, 500);
     }
-    projection = Frustum(left, right, bot, top, 0.2, 500);
 }
 
 //----------------------------------------------------------------------------
