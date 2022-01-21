@@ -604,7 +604,7 @@ static void materialMenu(int id)
     {
         toolObj = currObject;
         setToolCallbacks(adjustAmbientDiffuse, mat2(1, 0, 0, 1),
-                         adjustSpecularShine, mat2(1, 0, 0, 100));
+                         adjustSpecularShine, mat2(1, 0, 0, 1));
     }
     else
     {
