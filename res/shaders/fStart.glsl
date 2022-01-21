@@ -51,9 +51,12 @@ void main()
     // globalAmbient is independent of distance from the light source
     vec3 globalAmbient = vec3(0.1, 0.1, 0.1);
 
-    color.rgb = globalAmbient  + ambient + diffuse + specular;
+    // part F - Adjust light based on distance to object
+    float lightDropoff = 0.01 + length(Lvec);
+
+    color.rgb = globalAmbient  + ((ambient + diffuse)/lightDropoff) + specular;
     color.a = 1.0;
 
     // part B - declare texScale var and replace 2.0
-    gl_FragColor = color * texture2D( texture, texCoord * texScale );
+    gl_FragColor = color * texture2D( texture, texCoord * texScale ) + vec4((specular/lightDropoff), 1.0);
 }
